@@ -1,0 +1,9 @@
+<form  action="/company/update/" method="post" >{% csrf_token %}
+	<label class="control-label" >公司名称</label>
+	<input type="text" id="name" name="name" value={{company.name}} readonly="true"><br>
+	<label class="control-label" >公司介绍</label>
+	<input type="text"  id="desc" name="desc" value={{company.desc}}><br>
+	<label class="control-label" >公司人数</label>
+	<input type="text"  id="num" name="num" value={{company.num}}><br>
+	<input type="submit" value="提交">
+</form>

@@ -1,0 +1,11 @@
+<form  action="/company/save/" method="post" >{% csrf_token %}
+	<label class="control-label" >公司名称</label>
+	<input type="text" id="name" name="name"><br>
+	<label class="control-label" >公司介绍</label>
+	<input type="text"  id="desc" name="desc"><br>
+	<label class="control-label" >公司人数</label>
+	<input type="text"  id="num" name="num"><br>
+
+	<input type="submit" value="提交">
+</form>
+
