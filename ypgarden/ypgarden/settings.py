@@ -29,7 +29,9 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS =[]#'*'# ['*']#'*'#[]
 
-
+STATIC_PATH= './ypgarden/statics/image'
+JS_PATH= './ypgarden/statics/js'
+CSS_PATH= './ypgarden/statics/css'
 # Application definition
 
 INSTALLED_APPS = (
@@ -60,10 +62,20 @@ WSGI_APPLICATION = 'ypgarden.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'yy',
+        'USER': 'root',
+        'PASSWORD': '123',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -84,4 +96,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/statics/'

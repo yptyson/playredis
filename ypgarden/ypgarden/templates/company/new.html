@@ -1,3 +1,6 @@
+{% extends "base.html"%}
+
+{% block content %}
 <form  action="/company/save/" method="post" >{% csrf_token %}
 	<label class="control-label" >公司名称</label>
 	<input type="text" id="name" name="name"><br>
@@ -9,3 +12,4 @@
 	<input type="submit" value="提交">
 </form>
 
+{% endblock%}
