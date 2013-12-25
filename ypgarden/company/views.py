@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse
 from django.template import RequestContext
 import redis
-
+from django.http import HttpResponse
 
 def new(request):
     return render_to_response('company/new.html',{'name':'yuanpeng'},context_instance=RequestContext(request))
@@ -37,7 +37,8 @@ def save(request):
 
     return redirect("/company/show/")
 
-from models import User2,engine#,session
+# from models import User2,engine#,session
+from models import User, Addr,engine
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 Session=sessionmaker()
@@ -147,10 +148,38 @@ def ql(request):
         print id,'---',username
     return render_to_response('company/new.html',{'name':'yuanpeng'},context_instance=RequestContext(request))
 
+#==================================
+#==================================
+def count(request):
+    #print session.query(User2).all().count()
+    return HttpResponse(session.query(User2).count())
+
+from sqlalchemy import func
+def group(request):
+    print session.query(func.count(User2.fullname),User2.fullname).group_by(User2.fullname).all()
+    #[(4L, 'Ed'), (3L, 'Ed Jones')]
+    return HttpResponse(123)
+
+def scalar(request):
+    return HttpResponse(session.query(func.count(User2.fullname)).scalar() )
 
 
+def rela(request):
+    u=User(name="tyson",fullname="mike",password='123')
+    session.add(u)
+    session.commit()
+    return HttpResponse(123)
 
+def addaddr(request):
+    #u=User(name="tyson",fullname="mike",password='123')
+    a = Addr(email_address="2@qq.com",user_id=1)
+    session.add(a)
+    session.commit()
+    return HttpResponse(234)
 
-
+def finduser(request):
+    for item in session.query(User).all():
+        print item.addr[0].email_address
+    return HttpResponse(345)
 
 

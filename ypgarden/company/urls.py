@@ -23,5 +23,11 @@ urlpatterns = patterns('company.views',
     url(r'orlist/$','orlist'),
     url(r'para/$','para'),
     url(r'psql/$','psql'),
-    url(r'ql/$','ql')
+    url(r'ql/$','ql'),
+    url(r'count/$','count'),
+    url(r'group/$','group'),
+    url(r'scalar/$','scalar'),
+    url(r'rela/$','rela'),
+    url(r'addaddr/$','addaddr'),
+    url(r'finduser/$','finduser')
 )
